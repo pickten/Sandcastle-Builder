@@ -281,17 +281,29 @@ Molpy.DefinePuzzles = function() {
 	Molpy.Sokoban = {}
 	Molpy.Sokoban.Primitives = [
       		["@+o"],
+      		
 	      	["@", "+", "o"],
+	      	
       		["o+@"],
+      		
       		["o", "+", "@"],
+      		
       		["@+_o"],
+      		
       		["@", "+", "_", "o"],
+      		
       		["o_+@"],
+      		
       		["o", "_","+", "@"],
+      		
       		["_@#","_+o"],
+      		
       		["__", "@+", "#o"],
+      		
       		["o+_", "#@_"],
+      		
       		["o#", "+@", "__"],
+      		
       		["@__"
       		,"_+%"
       		,"##o"],
@@ -332,7 +344,15 @@ Molpy.DefinePuzzles = function() {
       		,"##_##"
       		,"o+_##"],
       		
-      		["@"],
+      		["##___##"
+      		,"#_____#"
+      		,"__o+o__"
+      		,"__+@+__"
+      		,"__o+o__"
+      		,"#_____#"
+      		,"##___##"],
+      		
+      		["@"] //MUST be last
     	];
 	Molpy.Sokoban.trimPuzzle = function(po) {
   		'use strict';
