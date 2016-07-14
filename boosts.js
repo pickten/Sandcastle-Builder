@@ -8205,8 +8205,14 @@ Molpy.DefineBoosts = function() {
 		var rest = 0;
 		for (var inf in Molpy.NestLinings) if (inf != thing) rest += (nest.Liners[inf] || 0);
 		var cur = (nest.Liners[thing] || 0);
-		if (cur+change < 0 || (!Molpy.Got('Marketing') && ((rest+cur+change) > 100)) || cur + change > 100 || rest + cur + change > 200) return;
-		nest.Liners[thing] = (nest.Liners[thing] || 0) + change;
+
+		var newVal = Math.min(Math.max(cur + change, 0), 100);
+
+		var limit = Molpy.Got('Marketing') ? 200 : 100;
+		if (rest + newVal > limit)
+			newVal = limit - rest;
+
+		nest.Liners[thing] = newVal;
 		nest.Refresh();
 	}
 
@@ -11575,7 +11581,7 @@ Molpy.DefineBoosts = function() {
 		name: 'Topiary',
 		icon: 'topiary',
 		group: 'drac',
-		desc: 'When fleding, if the clutch is too large for the NP, the rest are left as hatchlings and not wasted',
+		desc: 'When fledging, if the clutch is too large for the NP, the rest are left as hatchlings and not wasted',
 		price: { Diamonds:345678, Goats:Infinity },
 	});
 
@@ -13354,8 +13360,8 @@ Molpy.Coallate = function(){
 			group: 'varie',
 			className: 'action',
 			desc: function(me){
-				var str='Lets you turn the essence of a color into its dual (Blueness to <i>Other</i>ness, <i>Other</i>ness to Blueness, Blackness to'
-				str+=(Molpy.Got('Whiteness')?'Whiteness':'???')+'and vice versa). Uses 5 Blackness to begin the operation, then '
+				var str='Lets you turn the essence of a color into its dual (Blueness to <i>Other</i>ness, <i>Other</i>ness to Blueness, Blackness to '
+				str+=(Molpy.Got('Whiteness')?'Whiteness':'???')+' and vice versa). Uses 5 Blackness to begin the operation, then '
 				str=str+'between 1-10 of the original color per amount of new color you wish to craft.'
 				if(Molpy.Got('Polarizer')){
 					str=str+' You may dualize:'
@@ -13576,7 +13582,7 @@ Molpy.Coallate = function(){
 			className: 'alert',
 			countdownFunction: function() {
 				if(this.startCountdown(true)>5 && this.countdown==2){
-					Molpy.Notify("Ceci n'est pas un film d'espionage.") //This is not a spy movie. 
+					Molpy.Notify("Ceci n'est pas un film d'espionnage.") //This is not a spy movie. 
 				//Ref is to the classic painting with "Ceci n'est pas une pipe." and to the standard bomb scenario
 				}
 			},
