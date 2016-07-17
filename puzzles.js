@@ -352,6 +352,16 @@ Molpy.DefinePuzzles = function() {
       		,"#_____#"
       		,"##___##"],
       		
+      		["_____"
+		,"_@+%_"
+		,"_+%o_"
+		,"_%o%_"
+		,"_____"],
+      		
+      		["#o##"
+		,"#+__"
+		,"%_+_"
+      		
       		["@"] //MUST be last
     	];
 	Molpy.Sokoban.trimPuzzle = function(po) {
