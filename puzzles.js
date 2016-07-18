@@ -477,16 +477,19 @@ Molpy.DefinePuzzles = function() {
 		Molpy.Notify("Your builders are still recovering from their recent ceasing to exist",1);
 	}
 	Molpy.Sokoban.addBuffer = function(){
+		function pushy(a,b){
+			if(a.ind(b)==-1){a.push(b)} // little silly helper cause why not
+		}
 		var p = GLRschoice(Molpy.Sokoban.buffer);
 		if(flandom(4)){
 			var ps = GLRschoice(Molpy.Sokoban.buffer);
 			var cs = flandom(2) ? Molpy.Sokoban.intersects : Molpy.Sokoban.extend
 			var newer = [cs(p,ps),Math.max(p[1],ps[1])+1];
-			Molpy.Sokoban.buffer.push(newer);
+			pushy(Molpy.Sokoban.buffer,newer);
 		} else {
-			Molpy.Sokoban.buffer.push([Molpy.Sokoban.wrapPuzzle(p[0],"#",1),p[1]]);
-			Molpy.Sokoban.buffer.push([Molpy.Sokoban.clearrand(p[0]),p[1]]);
-			Molpy.Sokoban.buffer.push([Molpy.Sokoban.editrand(p[0]),p[1]]);
+			pushy(Molpy.Sokoban.buffer,[Molpy.Sokoban.wrapPuzzle(p[0],"#",1),p[1]]);
+			pushy(Molpy.Sokoban.buffer,[Molpy.Sokoban.clearrand(p[0]),p[1]]);
+			pushy(Molpy.Sokoban.buffer,[Molpy.Sokoban.editrand(p[0]),p[1]]);
 		}
 	}
 	//In Molpy.Think, add...
