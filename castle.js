@@ -3993,7 +3993,7 @@ Molpy.Up = function() {
 		while(Molpy.lateness > Molpy.mNPlength) {
 			try {
 				Molpy.Anything = 1;
-				if(!Molpy.Stop) Molpy.Think();
+				if(!Molpy.Stop); //Molpy.Think();
 			} catch(e) {
 				alert('Something went wrong in Molpy.Think() ' + (Molpy.ketchupTime ? 'while ketching up: ' : ': ') + e + '\n\n' + e.stack);
 				throw e;
