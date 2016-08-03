@@ -3268,7 +3268,7 @@ Molpy.Up = function() {
 	 * should be called once per milliNewPix
 	 *************************************************************/
 	Molpy.Think = function() {
-		Molpy.toolsBuilt = 0;
+		/*Molpy.toolsBuilt = 0;
 		Molpy.Boosts['Sand'].toCastles();
 		Molpy.checkLootNums();
 
@@ -3388,7 +3388,7 @@ Molpy.Up = function() {
 
 		if(Math.floor(Molpy.ONGelapsed / 1000) % 3 == 0) Molpy.flashes = 0;
 		
-		Molpy.toolsNeedRepaint = 1;
+		Molpy.toolsNeedRepaint = 1;*/
 	};
 	Molpy.RunPhoto=function(){
 		Molpy.getPhoto();
@@ -3987,21 +3987,21 @@ Molpy.Up = function() {
 		}
 		var t = Molpy.time;
 		Molpy.time = moment();
-		Molpy.ketchupTime = 0;
-		Molpy.lateness += (Molpy.time - t);
-		Molpy.lateness = Math.min(Molpy.lateness, 7200);//don't ketchup up too much
-		while(Molpy.lateness > Molpy.mNPlength) {
+		//Molpy.ketchupTime = 0;
+		//Molpy.lateness += (Molpy.time - t);
+		//Molpy.lateness = Math.min(Molpy.lateness, 7200);//don't ketchup up too much
+		//while(Molpy.lateness > Molpy.mNPlength) {
 			try {
 				Molpy.Anything = 1;
-				if(!Molpy.Stop); //Molpy.Think();
+				if(!Molpy.Stop) Molpy.Think();
 			} catch(e) {
 				alert('Something went wrong in Molpy.Think() ' + (Molpy.ketchupTime ? 'while ketching up: ' : ': ') + e + '\n\n' + e.stack);
 				throw e;
 				return;
 			}
-			Molpy.ketchupTime = 1;
-			Molpy.lateness -= Molpy.mNPlength;
-		}
+		//	Molpy.ketchupTime = 1;
+		//	Molpy.lateness -= Molpy.mNPlength;
+		//}
 		Molpy.ketchupTime = 0;
 		try {
 			if (Molpy.Anything) Molpy.Draw()
